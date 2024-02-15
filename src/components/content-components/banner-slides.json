@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_content_components_banner_slides",
+  "info": {
+    "displayName": "Banner Slides",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "bannerConfig": {
+      "type": "json"
+    }
+  }
+}

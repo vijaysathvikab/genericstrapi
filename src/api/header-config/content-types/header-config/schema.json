@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "header_configs",
+  "info": {
+    "singularName": "header-config",
+    "pluralName": "header-configs",
+    "displayName": "Header Config"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "headerConfig": {
+      "type": "json"
+    }
+  }
+}

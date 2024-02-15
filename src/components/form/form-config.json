@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_form_form_configs",
+  "info": {
+    "displayName": "Form Config",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "formConfig": {
+      "type": "json"
+    }
+  }
+}

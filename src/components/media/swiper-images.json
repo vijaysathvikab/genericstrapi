@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_media_swiper_images",
+  "info": {
+    "displayName": "swiperImages",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "swiperImagesConfig": {
+      "type": "json"
+    }
+  }
+}

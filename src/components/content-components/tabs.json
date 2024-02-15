@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_content_components_tabs",
+  "info": {
+    "displayName": "Tabs",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "tabsConfig": {
+      "type": "json"
+    }
+  }
+}

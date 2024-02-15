@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_content_components_swiper_banners",
+  "info": {
+    "displayName": "swiperBanner",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "swiperBannerConfig": {
+      "type": "json"
+    }
+  }
+}
