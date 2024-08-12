@@ -1,0 +1,22 @@
+{
+    "kind": "singleType",
+    "collectionName": "carts",
+    "info": {
+        "singularName": "cart",
+        "pluralName": "carts",
+        "displayName": "Cart",
+        "description": "Shopping cart"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "abandoned": {
+            "type": "boolean",
+            "default": false
+        },
+        "lastConfigUpdate": {
+            "type": "datetime"
+        }
+    }
+}
