@@ -7,7 +7,25 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }) {
+    const extensionService = strapi.plugin('graphql').service('extension');
+
+    extensionService.use(({ nexus }) => ({
+      types: [
+        nexus.extendType({
+          type: 'UsersPermissionsMe',
+          definition(t) {
+            t.string('roleName', {
+              description: 'Role name of the current user',
+              resolve(root, args, context) {
+                return context.state.user.role.name;
+              },
+            });
+          },
+        }),
+      ],
+    }));
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
