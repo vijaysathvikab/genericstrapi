@@ -54,4 +54,16 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 
 ---
 
+
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+## API Documentation (Updated 2024)
+
+### Core Resources
+- **Products**: `GET /api/products` (Public)
+- **Categories**: `GET /api/categories` (Public)
+- **Orders**: `POST /api/orders` (Auth required)
+
+### Extensions
+- **GraphQL**: Endpoint at `/graphql`
+- **Upload**: Cloudinary configured
