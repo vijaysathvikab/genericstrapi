@@ -13,6 +13,7 @@ module.exports = [
           upgradeInsecureRequests: null,
         },
       },
+      referrerPolicy: { policy: 'same-origin' },
     },
   },
   'strapi::cors',
