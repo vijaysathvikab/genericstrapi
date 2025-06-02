@@ -1,0 +1,33 @@
+{
+    "kind": "collectionType",
+    "collectionName": "notifications",
+    "info": {
+        "singularName": "notification",
+        "pluralName": "notifications",
+        "displayName": "Notification",
+        "description": "System and user notifications"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "attributes": {
+        "type": {
+            "type": "string",
+            "required": true
+        },
+        "message": {
+            "type": "text",
+            "required": true
+        },
+        "user": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "notifications"
+        },
+        "read": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}
