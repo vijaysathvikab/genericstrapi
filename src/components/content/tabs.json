@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_content_tabs",
+  "info": {
+    "displayName": "Tabs",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "orientation": {
+      "type": "enumeration",
+      "enum": [
+        "Horizontal",
+        "Vertical"
+      ]
+    },
+    "tab": {
+      "displayName": "singletab",
+      "type": "component",
+      "repeatable": true,
+      "component": "content.singletab"
+    }
+  }
+}

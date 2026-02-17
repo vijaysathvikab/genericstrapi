@@ -2,12 +2,31 @@
   "collectionName": "components_form_form_configs",
   "info": {
     "displayName": "Form Config",
-    "icon": "bulletList"
+    "icon": "bulletList",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "formConfig": {
+    "formStyle": {
       "type": "json"
+    },
+    "formClass": {
+      "type": "string"
+    },
+    "buttonStyle": {
+      "type": "json"
+    },
+    "buttonClass": {
+      "type": "string"
+    },
+    "formFields": {
+      "displayName": "Form Fields",
+      "type": "component",
+      "repeatable": true,
+      "component": "form.form-fields"
+    },
+    "headerText": {
+      "type": "string"
     }
   }
 }

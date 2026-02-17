@@ -1,13 +1,15 @@
 {
-  "collectionName": "components_content_components_content_blocks",
+  "collectionName": "components_content_singletabs",
   "info": {
-    "displayName": "Content Block",
-    "icon": "pencil",
-    "description": ""
+    "displayName": "singletab",
+    "icon": "apps"
   },
   "options": {},
   "attributes": {
-    "contentBody": {
+    "title": {
+      "type": "string"
+    },
+    "tabBody": {
       "type": "customField",
       "options": {
         "output": "HTML",

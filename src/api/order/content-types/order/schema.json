@@ -1,0 +1,42 @@
+{
+    "kind": "collectionType",
+    "collectionName": "orders",
+    "info": {
+        "singularName": "order",
+        "pluralName": "orders",
+        "displayName": "Order",
+        "description": "Customer orders"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "attributes": {
+        "total": {
+            "type": "decimal",
+            "required": true
+        },
+        "status": {
+            "type": "enumeration",
+            "enum": [
+                "pending",
+                "paid",
+                "shipped",
+                "delivered",
+                "cancelled"
+            ],
+            "default": "pending"
+        },
+        "items": {
+            "type": "json"
+        },
+        "user": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "orders"
+        },
+        "stripeId": {
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_banners",
+  "info": {
+    "displayName": "Banners",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.slides"
+    }
+  }
+}

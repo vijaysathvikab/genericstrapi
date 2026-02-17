@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_icons_icons",
+  "info": {
+    "displayName": "icons",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "iconCode": {
+      "type": "string"
+    },
+    "iconLink": {
+      "type": "string"
+    }
+  }
+}

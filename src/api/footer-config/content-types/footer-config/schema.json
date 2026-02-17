@@ -4,15 +4,82 @@
   "info": {
     "singularName": "footer-config",
     "pluralName": "footer-configs",
-    "displayName": "Footer Config"
+    "displayName": "Footer Config",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "footerConfig": {
-      "type": "json"
+    "footerLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "footerTextColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "footerBackgroundColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "menuPosition": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "center",
+        "left"
+      ]
+    },
+    "logoPosition": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "center",
+        "left"
+      ]
+    },
+    "footerMenuOne": {
+      "type": "customField",
+      "customField": "plugin::custom-plugin.menuSelector"
+    },
+    "footerMenuTwo": {
+      "type": "customField",
+      "customField": "plugin::custom-plugin.menuSelector"
+    },
+    "footerMenuThree": {
+      "type": "customField",
+      "customField": "plugin::custom-plugin.menuSelector"
+    },
+    "footerRibbonIcons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "icons.icons"
+    },
+    "iconPosition": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "center",
+        "left"
+      ]
+    },
+    "footerRibbonTextColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "footerRibbonBackgroundColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
     }
   }
 }

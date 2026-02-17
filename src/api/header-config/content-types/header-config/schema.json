@@ -4,15 +4,101 @@
   "info": {
     "singularName": "header-config",
     "pluralName": "header-configs",
-    "displayName": "Header Config"
+    "displayName": "Header Config",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "headerConfig": {
-      "type": "json"
+    "headerMenu": {
+      "type": "customField",
+      "customField": "plugin::custom-plugin.menuSelector"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "menuPosition": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "center",
+        "left"
+      ]
+    },
+    "logoPosition": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "center",
+        "left"
+      ]
+    },
+    "headerMainBackgroundColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "headerMainTextColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "headerRibbonBackgroundColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "headerRibbonTextColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "headerRibbonIconPosition": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "center",
+        "left"
+      ]
+    },
+    "headerRibbonIcons": {
+      "displayName": "icons",
+      "type": "component",
+      "repeatable": true,
+      "component": "icons.icons"
+    },
+    "headerMegaMenuTextColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "headerMegaMenuBackgroundColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "headerMegaMenu": {
+      "type": "customField",
+      "customField": "plugin::custom-plugin.menuSelector"
+    },
+    "dropdownTextColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "dropdownBackgroundColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
     }
   }
 }

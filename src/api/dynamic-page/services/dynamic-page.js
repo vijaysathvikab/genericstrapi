@@ -25,7 +25,7 @@ const dynamicPage = async (targetPage) => {
     const strapiPage = await getPageData("api::page.page", {
       filters: { slug: pageSlug },
     });
-    console.log("page data", strapiPage);
+    // console.log("page data", strapiPage);
     let pageData = new page.PageModel(strapiPage.title, strapiPage.slug);
     const assembledComponents = dynamicComponentAssembly.assembleComponents(
       strapiPage.components

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_media_images",
+  "info": {
+    "displayName": "images",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "alt": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

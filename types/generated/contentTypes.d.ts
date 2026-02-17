@@ -368,12 +368,31 @@ export interface ApiFooterConfigFooterConfig extends Schema.SingleType {
     singularName: 'footer-config';
     pluralName: 'footer-configs';
     displayName: 'Footer Config';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    footerConfig: Attribute.JSON;
+    footerLogo: Attribute.Media;
+    footerTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    footerBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    menuPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    logoPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    footerMenuOne: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    footerMenuTwo: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    footerMenuThree: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    footerRibbonIcons: Attribute.Component<'icons.icons', true>;
+    iconPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    footerRibbonTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    footerRibbonBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -398,12 +417,40 @@ export interface ApiHeaderConfigHeaderConfig extends Schema.SingleType {
     singularName: 'header-config';
     pluralName: 'header-configs';
     displayName: 'Header Config';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    headerConfig: Attribute.JSON;
+    headerMenu: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    logo: Attribute.Media;
+    tagline: Attribute.String;
+    menuPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    logoPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    headerMainBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerMainTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerRibbonBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerRibbonTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerRibbonIconPosition: Attribute.Enumeration<
+      ['right', 'center', 'left']
+    >;
+    headerRibbonIcons: Attribute.Component<'icons.icons', true>;
+    headerMegaMenuTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerMegaMenuBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerMegaMenu: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    dropdownTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    dropdownBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -438,9 +485,9 @@ export interface ApiPagePage extends Schema.CollectionType {
     slug: Attribute.String;
     components: Attribute.DynamicZone<
       [
-        'content-components.content-block',
-        'content-components.swiper-banner',
-        'content-components.tabs',
+        'content.content-block',
+        'content.banners',
+        'content.tabs',
         'form.form-config',
         'media.swiper-images'
       ]
@@ -669,6 +716,104 @@ export interface PluginContentReleasesReleaseAction
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::content-releases.release-action',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginMenusMenu extends Schema.CollectionType {
+  collectionName: 'menus';
+  info: {
+    name: 'Menu';
+    displayName: 'Menu';
+    singularName: 'menu';
+    pluralName: 'menus';
+    tableName: 'menus';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'plugin::menus.menu', 'title'> & Attribute.Required;
+    items: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToMany',
+      'plugin::menus.menu-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginMenusMenuItem extends Schema.CollectionType {
+  collectionName: 'menu_items';
+  info: {
+    name: 'MenuItem';
+    displayName: 'Menu Item';
+    singularName: 'menu-item';
+    pluralName: 'menu-items';
+    tableName: 'menu_items';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    order: Attribute.Integer;
+    title: Attribute.String & Attribute.Required;
+    url: Attribute.String;
+    target: Attribute.Enumeration<['_blank', '_parent', '_self', '_top']>;
+    root_menu: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'manyToOne',
+      'plugin::menus.menu'
+    > &
+      Attribute.Required;
+    parent: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'plugin::menus.menu-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::menus.menu-item',
       'oneToOne',
       'admin::user'
     > &
@@ -1037,104 +1182,6 @@ export interface PluginEzformsRecipient extends Schema.CollectionType {
   };
 }
 
-export interface PluginMenusMenu extends Schema.CollectionType {
-  collectionName: 'menus';
-  info: {
-    name: 'Menu';
-    displayName: 'Menu';
-    singularName: 'menu';
-    pluralName: 'menus';
-    tableName: 'menus';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<'plugin::menus.menu', 'title'> & Attribute.Required;
-    items: Attribute.Relation<
-      'plugin::menus.menu',
-      'oneToMany',
-      'plugin::menus.menu-item'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::menus.menu',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::menus.menu',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginMenusMenuItem extends Schema.CollectionType {
-  collectionName: 'menu_items';
-  info: {
-    name: 'MenuItem';
-    displayName: 'Menu Item';
-    singularName: 'menu-item';
-    pluralName: 'menu-items';
-    tableName: 'menu_items';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    order: Attribute.Integer;
-    title: Attribute.String & Attribute.Required;
-    url: Attribute.String;
-    target: Attribute.Enumeration<['_blank', '_parent', '_self', '_top']>;
-    root_menu: Attribute.Relation<
-      'plugin::menus.menu-item',
-      'manyToOne',
-      'plugin::menus.menu'
-    > &
-      Attribute.Required;
-    parent: Attribute.Relation<
-      'plugin::menus.menu-item',
-      'oneToOne',
-      'plugin::menus.menu-item'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::menus.menu-item',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::menus.menu-item',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1152,6 +1199,8 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::menus.menu': PluginMenusMenu;
+      'plugin::menus.menu-item': PluginMenusMenuItem;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
@@ -1159,8 +1208,6 @@ declare module '@strapi/types' {
       'plugin::strapi-google-auth.google-credential': PluginStrapiGoogleAuthGoogleCredential;
       'plugin::ezforms.submission': PluginEzformsSubmission;
       'plugin::ezforms.recipient': PluginEzformsRecipient;
-      'plugin::menus.menu': PluginMenusMenu;
-      'plugin::menus.menu-item': PluginMenusMenuItem;
     }
   }
 }

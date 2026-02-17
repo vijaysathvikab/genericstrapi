@@ -1,0 +1,32 @@
+{
+    "kind": "collectionType",
+    "collectionName": "coupons",
+    "info": {
+        "singularName": "coupon",
+        "pluralName": "coupons",
+        "displayName": "Coupon",
+        "description": "Discount coupons"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "code": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "discountPercentage": {
+            "type": "integer",
+            "min": 1,
+            "max": 100
+        },
+        "validUntil": {
+            "type": "datetime"
+        },
+        "isActive": {
+            "type": "boolean",
+            "default": true
+        }
+    }
+}
