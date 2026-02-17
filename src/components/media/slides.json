@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_content_components_slides",
+  "info": {
+    "displayName": "Slides",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "ctaLabel": {
+      "type": "string"
+    },
+    "ctaLink": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "slideType": {
+      "type": "enumeration",
+      "enum": [
+        "basic-bottom-image",
+        "basic-top-image",
+        "left-overlay",
+        "right-overlay",
+        "horizontal-right-image",
+        "horizontal-left-image",
+        "image"
+      ]
+    }
+  }
+}

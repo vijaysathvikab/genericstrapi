@@ -21,9 +21,9 @@
     "components": {
       "type": "dynamiczone",
       "components": [
-        "content-components.content-block",
-        "content-components.swiper-banner",
-        "content-components.tabs",
+        "content.content-block",
+        "content.banners",
+        "content.tabs",
         "form.form-config",
         "media.swiper-images"
       ]

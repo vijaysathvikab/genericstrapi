@@ -368,12 +368,31 @@ export interface ApiFooterConfigFooterConfig extends Schema.SingleType {
     singularName: 'footer-config';
     pluralName: 'footer-configs';
     displayName: 'Footer Config';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    footerConfig: Attribute.JSON;
+    footerLogo: Attribute.Media;
+    footerTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    footerBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    menuPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    logoPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    footerMenuOne: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    footerMenuTwo: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    footerMenuThree: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    footerRibbonIcons: Attribute.Component<'icons.icons', true>;
+    iconPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    footerRibbonTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    footerRibbonBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -404,9 +423,34 @@ export interface ApiHeaderConfigHeaderConfig extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    headerConfig: Attribute.JSON;
     headerMenu: Attribute.String &
       Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    logo: Attribute.Media;
+    tagline: Attribute.String;
+    menuPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    logoPosition: Attribute.Enumeration<['right', 'center', 'left']>;
+    headerMainBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerMainTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerRibbonBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerRibbonTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerRibbonIconPosition: Attribute.Enumeration<
+      ['right', 'center', 'left']
+    >;
+    headerRibbonIcons: Attribute.Component<'icons.icons', true>;
+    headerMegaMenuTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerMegaMenuBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    headerMegaMenu: Attribute.String &
+      Attribute.CustomField<'plugin::custom-plugin.menuSelector'>;
+    dropdownTextColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    dropdownBackgroundColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -441,9 +485,9 @@ export interface ApiPagePage extends Schema.CollectionType {
     slug: Attribute.String;
     components: Attribute.DynamicZone<
       [
-        'content-components.content-block',
-        'content-components.swiper-banner',
-        'content-components.tabs',
+        'content.content-block',
+        'content.banners',
+        'content.tabs',
         'form.form-config',
         'media.swiper-images'
       ]

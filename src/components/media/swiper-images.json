@@ -2,12 +2,27 @@
   "collectionName": "components_media_swiper_images",
   "info": {
     "displayName": "swiperImages",
-    "icon": "picture"
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "swiperImagesConfig": {
-      "type": "json"
+    "swiperStyle": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "cards",
+        "cube",
+        "fade",
+        "coverflow",
+        "flip"
+      ]
+    },
+    "images": {
+      "displayName": "images",
+      "type": "component",
+      "repeatable": true,
+      "component": "media.images"
     }
   }
 }
